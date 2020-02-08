@@ -2,22 +2,44 @@
   "name": "destiny_bgs",
   "version": "0.1.0",
   "private": true,
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "bootstrap": "^4.4.1",
+    "fitty": "^2.3.0",
+    "fs-extra": "^8.1.0",
+    "glob": "^7.1.6",
+    "gm": "^1.23.1",
+    "jquery": "^3.4.1",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-image": "^2.3.0",
+    "react-lazyload": "^2.6.5",
+    "react-scripts": "^3.3.1",
+    "react-swipeable": "^5.5.0",
+    "sharp": "^0.24.0",
+    "verge": "^1.10.2",
+    "write-json-file": "^4.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -30,5 +52,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "https://jorgev259.github.io/destiny_bgs"
 }
