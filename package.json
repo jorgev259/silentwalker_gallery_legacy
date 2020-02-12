@@ -25,12 +25,12 @@
     "gm": "^1.23.1",
     "jquery": "^3.4.1",
     "react": "^16.12.0",
-    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-image": "^2.3.0",
     "react-lazyload": "^2.6.5",
     "react-scripts": "^3.3.1",
     "react-swipeable": "^5.5.0",
+    "reactstrap": "^8.4.1",
     "sharp": "^0.24.0",
     "verge": "^1.10.2",
     "write-json-file": "^4.2.1"
@@ -53,5 +53,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://jorgev259.github.io/destiny_bgs"
+  "homepage": "https://jorgev259.github.io/destiny_bgs_test"
 }
