@@ -13,6 +13,7 @@
 /build
 /public/img/fullres/**
 /public/img/thumbs/**
+/src/js/bg.json
 
 # misc
 .DS_Store
