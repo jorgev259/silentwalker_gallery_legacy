@@ -38,7 +38,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sync":" rclone sync -v 'drive:SiLeNtWaLkEr Destiny Emblem Wallpapers' /root/gallery/public/img/fullres"
   },
   "browserslist": {
     "production": [
@@ -52,5 +53,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://jorgev259.github.io/destiny_bgs_test"
+  "homepage": "http://116.203.48.142"
 }
