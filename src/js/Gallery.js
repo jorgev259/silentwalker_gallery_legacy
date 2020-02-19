@@ -55,7 +55,7 @@ class FullImg extends React.Component {
               style={{ width: '100%' }}
               draggable='false'
               src={this.props.url}
-              loader={<Img src='img/assets/loading.gif' />}
+              loader={<Img src={`img/assets/loading_${this.props.size === 'lg' ? 'Desktop' : 'Mobile'.gif`} />}
             />
           </ModalBody>
           <ModalFooter>
