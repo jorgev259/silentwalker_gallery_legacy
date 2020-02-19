@@ -5,7 +5,7 @@ export default class NavbarHeader extends React.Component {
   state={ collapsed: true }
   render () {
     return (
-      <Navbar bg='dark' variant='dark' expand='sm'>
+      <Navbar dark bg='dark' variant='dark' expand='sm'>
 
         <NavbarBrand href='#home'>
           <img
@@ -15,9 +15,9 @@ export default class NavbarHeader extends React.Component {
             style={{ height: '30px' }}
           />
         </NavbarBrand>
-        <DeviceToggle handleDevice={this.onHandleDevice} className='d-sm-none' active={this.props.device === 'Mobile'} />
+        <DeviceToggle onHandleDevice={this.props.handleDevice} className='d-sm-none' active={this.props.device === 'Mobile'} />
 
-        <NavbarToggler aria-controls='basic-navbar-nav' onClick={() => this.setState({ collapsed: this.state.collapsed })} />
+        <NavbarToggler onClick={() => this.setState({ collapsed: !this.state.collapsed })} />
         <Collapse id='basic-navbar-nav' navbar isOpen={!this.state.collapsed}>
           <Nav className='mr-auto nav-pills' navbar>
             <NavDropdownHover title='Destiny 1' game={this.props.game} onClick={() => this.onHandleType('', 'Destiny 1')}>
