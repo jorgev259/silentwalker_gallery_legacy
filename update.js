@@ -11,6 +11,7 @@ glob.sync('./public/img/fullres/**/*', { nodir: true }).forEach(e => {
     items[game][device].push(name)
   } else {
     const [game, device, type, name] = data
+
     if (!items[game]) items[game] = {}
     if (!items[game][device]) items[game][device] = {}
     if (!items[game][device][type]) items[game][device][type] = []
