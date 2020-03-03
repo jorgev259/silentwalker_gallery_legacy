@@ -6,7 +6,8 @@
 body{
   font-family: "FuturaMedium";
   letter-spacing: 0.18em;
-  height:100vh
+  height:100vh;
+  background-color: #282828;
 }
 
 #root{
@@ -73,7 +74,8 @@ body{
   width:auto;
   transition: transform 1s;
   cursor:pointer;
-  z-index: 2
+  z-index: 2;
+  background-color: white;
 }
 
 .img-row img:hover{
