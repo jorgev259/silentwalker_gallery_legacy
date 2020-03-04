@@ -25,7 +25,7 @@ export default class NavbarHeader extends React.Component {
               <NavDropdownHoverItem title='DOWNLOAD ALL' />
             </NavDropdownHover>
 
-            <NavDropdownHover title='Destiny 2' game={this.props.game}>
+            <NavDropdownHover title='Destiny 2' game={this.props.game} url={`/Destiny 2/${this.props.device}/Emblems`}>
               <NavDropdownHoverItem title='Emblems' url={`/Destiny 2/${this.props.device}/Emblems`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
               <NavDropdownHoverItem title='Seals' url={`/Destiny 2/${this.props.device}/Seals`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
               <NavDropdownHoverItem title='Bonus' url={`/Destiny 2/${this.props.device}/Bonus`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
@@ -68,14 +68,16 @@ class NavDropdownHover extends React.Component {
     handleHover= () => { if (this.checkMedia()) this.setState({ show: true }) }
     handleLeave = () => { if (this.checkMedia()) this.setState({ show: false }) }
 
-    handleClick= () => { if (!this.checkMedia()) this.setState({ show: true }) }
-    handleClickOff = () => { if (!this.checkMedia()) this.setState({ show: false }) }
+    handleClick= () => {
+      if (!this.checkMedia() && this.props.url) navigate(this.props.url)
+    }
+    // handleClickOff = () => { if (!this.checkMedia()) this.setState({ show: false }) }
 
     render () {
       return (
-        <div onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover} className={`dropdown nav-item ${this.props.game === this.props.title ? 'current' : ''} ${this.state.show ? 'show' : ''}`}>
+        <div onClick={this.handleClick} onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover} className={`dropdown nav-item ${this.props.game === this.props.title ? 'current' : ''} ${this.state.show || !this.checkMedia() ? 'show' : ''}`}>
           <a aria-haspopup='true' onClick={this.props.onClick} aria-expanded={this.state.show} className='dropdown-toggle nav-link' role='button'>{this.props.title}</a>
-          <div aria-labelledby='' className={`dropdown-menu ${this.state.show ? 'show' : ''}`}>{this.props.children}</div>
+          <div aria-labelledby='' className={`dropdown-menu ${this.state.show || !this.checkMedia() ? 'show' : ''}`}>{this.props.children}</div>
         </div>
       )
     }

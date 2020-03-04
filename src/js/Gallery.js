@@ -53,8 +53,6 @@ class FullImg extends React.Component {
       ? `/img/fullres/${this.props.game}/${this.props.device}/${this.props.type}/${this.props.modal}.jpg`
       : `/img/fullres/${this.props.game}/${this.props.device}/${this.props.modal}.jpg`
 
-    console.log(path)
-
     const pathBase = this.props.includeType
       ? `/${this.props.game}/${this.props.device}/${this.props.type}`
       : `/${this.props.game}/${this.props.device}`
