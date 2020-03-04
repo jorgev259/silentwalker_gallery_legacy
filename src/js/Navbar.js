@@ -69,7 +69,7 @@ class NavDropdownHover extends React.Component {
     handleLeave = () => { if (this.checkMedia()) this.setState({ show: false }) }
 
     handleClick= () => {
-      if (!this.checkMedia() && this.props.url) navigate(this.props.url)
+      if (this.props.url) navigate(this.props.url)
     }
     // handleClickOff = () => { if (!this.checkMedia()) this.setState({ show: false }) }
 

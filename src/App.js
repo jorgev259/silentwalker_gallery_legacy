@@ -53,7 +53,7 @@ export default class App extends React.Component {
           <div className='container-fluid'>
             <div className='row '>
               <div className='d-flex justify-content-center align-items-center'>
-                <img className='logo-img' src='/img/assets/logo.png' />
+                <img className='logo-img' alt='logo' src='/img/assets/logo.png' />
               </div>
               <div className='d-none d-sm-block ml-auto' style={{ fontSize: '13.5px' }}>
                 WEBSITE POWERED BY @CHITOWARLOCK
