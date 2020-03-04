@@ -75,8 +75,8 @@ class NavDropdownHover extends React.Component {
 
     render () {
       return (
-        <div onClick={this.handleClick} onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover} className={`dropdown nav-item ${this.props.game === this.props.title ? 'current' : ''} ${this.state.show || !this.checkMedia() ? 'show' : ''}`}>
-          <a aria-haspopup='true' onClick={this.props.onClick} aria-expanded={this.state.show} className='dropdown-toggle nav-link' role='button'>{this.props.title}</a>
+        <div onMouseLeave={this.handleLeave} onMouseEnter={this.handleHover} className={`dropdown nav-item ${this.props.game === this.props.title ? 'current' : ''} ${this.state.show || !this.checkMedia() ? 'show' : ''}`}>
+          <a aria-haspopup='true' onClick={this.handleClick} aria-expanded={this.state.show} className='dropdown-toggle nav-link' role='button'>{this.props.title}</a>
           <div aria-labelledby='' className={`dropdown-menu ${this.state.show || !this.checkMedia() ? 'show' : ''}`}>{this.props.children}</div>
         </div>
       )
