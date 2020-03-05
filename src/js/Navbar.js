@@ -21,7 +21,7 @@ export default class NavbarHeader extends React.Component {
         <NavbarToggler onClick={() => this.setState({ collapsed: !this.state.collapsed })} />
         <Collapse id='basic-navbar-nav' navbar isOpen={!this.state.collapsed}>
           <Nav className='mr-auto nav-pills' navbar>
-            <NavDropdownHover title='Destiny 1' game={this.props.game} onClick={() => navigate(`/Destiny 1/${this.props.device}`)}>
+            <NavDropdownHover title='Destiny 1' game={this.props.game} url={`/Destiny 1/${this.props.device}`}>
               <NavDropdownHoverItem title='DOWNLOAD ALL' />
             </NavDropdownHover>
 
