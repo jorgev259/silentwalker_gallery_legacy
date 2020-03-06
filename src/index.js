@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import Gallery from './js/Gallery'
-// import Info from './js/Info'
+import Info from './js/Info'
 
 import { useRoutes } from 'hookrouter'
 
-/* '/clanbanners': () => <App />,
-  '/info': () => <App pageComponent={Info} />, */
-
 const routes = {
+  '/clanbanners': () => <App />,
+  '/info': () => <App pageComponent={Info} />,
   '/Destiny%201/:device': ({ device }) => (
     <App
       pageComponent={Gallery} device={device}

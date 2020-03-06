@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, NavbarText, NavItem, NavbarToggler, NavbarBrand, Nav, Form, Input, Collapse } from 'reactstrap'
+import { NavLink, Navbar, NavbarText, NavItem, NavbarToggler, NavbarBrand, Nav, Form, Input, Collapse } from 'reactstrap'
 import { navigate } from 'hookrouter'
 
 export default class NavbarHeader extends React.Component {
@@ -31,12 +31,12 @@ export default class NavbarHeader extends React.Component {
               <NavDropdownHoverItem title='Bonus' url={`/Destiny 2/${this.props.device}/Bonus`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
               <NavDropdownHoverItem title='DOWNLOAD ALL' />
             </NavDropdownHover>
-            {/* <NavItem>
+            <NavItem>
               <NavLink onClick={() => navigate('/clanbanners')}>CLAN BANNERS</NavLink>
             </NavItem>
             <NavItem>
               <NavLink onClick={() => navigate('/info')}>INFO</NavLink>
-            </NavItem> */}
+            </NavItem>
             <NavItem>
               <DeviceToggle game={this.props.game} device={this.props.device} type={this.props.type} onHandleDevice={this.props.handleDevice} className='d-none d-sm-inline-block deviceRow' active={this.props.device === 'Mobile'} />
             </NavItem>

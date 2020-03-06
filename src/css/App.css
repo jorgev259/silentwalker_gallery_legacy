@@ -78,6 +78,24 @@ body{
   background-color: white;
 }
 
+.donate{
+  background-color: #fbfd1d;
+  border-color: #fbfd1d;
+  color: #3c3c3c;
+  font-weight: bold;
+}
+
+.motw{
+  color: #ededed;
+  border-color: #ededed;
+}
+
+.donate, .motw{
+  border-radius: 1em;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
 .img-row img:hover{
   transform: scale(1.1);
   z-index: 3
@@ -122,6 +140,25 @@ body{
   background-color: #282828;
   color: #cdcaca;
   display: inline-flex
+}
+
+
+.box {
+  min-height: min-content;
+  display: flex;
+  padding-bottom: 25px;
+}
+
+
+.content {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
 }
 
 .navbar{
