@@ -95,11 +95,15 @@ export default class Gallery extends React.Component {
     window.addEventListener('resize', () => this.adjustWidth())
   }
 
-  adjustWidth = (reset = false) => this.setState({
-    scroll: reset ? 0 : this.state.scroll,
-    imgWidth: $('.bgImg')[0].width,
-    maxScroll: ($('.bgImg')[0].width * this.maxRow) - viewportW()
-  }, this.props.handleInit)
+  adjustWidth = (reset = false) => {
+    if ($('.bgImg')[0]) {
+      this.setState({
+        scroll: reset ? 0 : this.state.scroll,
+        imgWidth: $('.bgImg')[0].width,
+        maxScroll: ($('.bgImg')[0].width * this.maxRow) - viewportW()
+      }, this.props.handleInit)
+    }
+  }
 
   adjustScroll = direction => this.setState({ scroll: this.state.scroll + direction })
   handleScroll = ev => this.setState({ scroll: ev.dir === 'Right' ? -1 : 1 })
