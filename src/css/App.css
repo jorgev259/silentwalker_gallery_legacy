@@ -215,7 +215,7 @@ a.dropdown-item:not([href]):hover, .dropdown.nav-item.current, a.dropdown-item.c
   background-color: #282828; 
 }
 
-.dropdown.nav-item{
+.nav-item{
   cursor: pointer;
   text-transform: uppercase;
 }
