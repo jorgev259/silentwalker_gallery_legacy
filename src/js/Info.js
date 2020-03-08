@@ -28,7 +28,7 @@ export default class Info extends React.Component {
                   These are all made in Illustrator / Photoshop, I make vectors for all the illustrations as you can see in the video that won the MOTW thanks to all of you.
                 </div>
                 <br />
-                <Button outline color='primary' className='motw'>MOTW</Button>
+                <Button outline color='primary' className='motw' href='https://www.youtube.com/watch?v=L_lWkV74vlQ'>MOTW</Button>
                 <br />
                 <br />
                 <div>
@@ -52,7 +52,7 @@ export default class Info extends React.Component {
                     This website is hosted at a server that have costs so if you like to help maintaning this website online I kindly ask you to donate and help me with the costs.
                   </div>
                   <br />
-                  <Button color='primary' className='donate'>DONATE</Button>
+                  <Button color='primary' className='donate' href='https://paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WH26ZAAT9WRYU'>DONATE</Button>
                 </div>
               </div>
             </Col>
