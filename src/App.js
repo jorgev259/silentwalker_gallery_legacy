@@ -45,7 +45,7 @@ export default class App extends React.Component {
 
     return (
       <>
-        <Navbar handleDevice={this.onHandleDevice} onHandleType={this.handleType} device={this.props.device} game={this.props.game} type={this.props.type} onHandleFilter={this.handleFilter} />
+        <Navbar toggle={this.props.toggle} handleDevice={this.onHandleDevice} onHandleType={this.handleType} device={this.props.device} game={this.props.game} type={this.props.type} onHandleFilter={this.handleFilter} />
 
         <this.props.pageComponent modal={this.props.modal} filter={this.state.filter} includeType={includeType} type={this.props.type} game={this.props.game} device={this.props.device} initialized={this.state.initialized} handleInit={this.onInit} images={sliced} />
 

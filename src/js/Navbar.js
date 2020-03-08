@@ -16,19 +16,19 @@ export default class NavbarHeader extends React.Component {
             style={{ height: '30px' }}
           />
         </NavbarBrand>
-        <DeviceToggle game={this.props.game} device={this.props.device} type={this.props.type} onHandleDevice={this.props.handleDevice} className='d-sm-none' active={this.props.device === 'Mobile'} />
+        <DeviceToggle toggle={this.props.toggle} game={this.props.game} device={this.props.device} type={this.props.type} onHandleDevice={this.props.handleDevice} className='d-sm-none' active={this.props.device === 'Mobile'} />
 
         <NavbarToggler onClick={() => this.setState({ collapsed: !this.state.collapsed })} />
         <Collapse id='basic-navbar-nav' navbar isOpen={!this.state.collapsed}>
           <Nav className='mr-auto nav-pills' navbar>
-            <NavDropdownHover title='Destiny 1' game={this.props.game} url={`/Destiny 1/${this.props.device}`}>
+            <NavDropdownHover title='Destiny 1' game={this.props.game} url={`/Destiny 1/${this.props.device || 'Desktop'}`}>
               <NavDropdownHoverItem title='DOWNLOAD ALL' />
             </NavDropdownHover>
 
-            <NavDropdownHover title='Destiny 2' game={this.props.game} url={`/Destiny 2/${this.props.device}/Emblems`}>
-              <NavDropdownHoverItem title='Emblems' url={`/Destiny 2/${this.props.device}/Emblems`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
-              <NavDropdownHoverItem title='Seals' url={`/Destiny 2/${this.props.device}/Seals`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
-              <NavDropdownHoverItem title='Bonus' url={`/Destiny 2/${this.props.device}/Bonus`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
+            <NavDropdownHover title='Destiny 2' game={this.props.game} url={`/Destiny 2/${this.props.device || 'Desktop'}/Emblems`}>
+              <NavDropdownHoverItem title='Emblems' url={`/Destiny 2/${this.props.device || 'Desktop'}/Emblems`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
+              <NavDropdownHoverItem title='Seals' url={`/Destiny 2/${this.props.device || 'Desktop'}/Seals`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
+              <NavDropdownHoverItem title='Bonus' url={`/Destiny 2/${this.props.device || 'Desktop'}/Bonus`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
               <NavDropdownHoverItem title='DOWNLOAD ALL' />
             </NavDropdownHover>
             <NavItem>
@@ -38,7 +38,7 @@ export default class NavbarHeader extends React.Component {
               <NavLink onClick={() => navigate('/info')}>INFO</NavLink>
             </NavItem>
             <NavItem>
-              <DeviceToggle game={this.props.game} device={this.props.device} type={this.props.type} onHandleDevice={this.props.handleDevice} className='d-none d-sm-inline-block deviceRow' active={this.props.device === 'Mobile'} />
+              <DeviceToggle toggle={this.props.toggle} game={this.props.game} device={this.props.device} type={this.props.type} onHandleDevice={this.props.handleDevice} className='d-none d-sm-inline-block deviceRow' active={this.props.device === 'Mobile'} />
             </NavItem>
           </Nav>
 
@@ -91,7 +91,7 @@ class DeviceToggle extends React.Component {
   }
 
   render () {
-    return (
+    return this.props.toggle !== false ? (
       <NavbarText className={this.props.className}>
         <img src='/img/assets/laptop.png' alt='' />
         <button type='button' onClick={this.handleToggle} className={`btn btn-toggle ${this.props.active ? 'active' : null}`}>
@@ -99,6 +99,6 @@ class DeviceToggle extends React.Component {
         </button>
         <img src='/img/assets/phone.png' alt='' />
       </NavbarText>
-    )
+    ) : null
   }
 }
