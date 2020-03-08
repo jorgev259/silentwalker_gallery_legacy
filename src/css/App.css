@@ -90,6 +90,19 @@ body{
   border-color: #ededed;
 }
 
+.motw:hover{
+  background-color: #ededed;
+  border-color: #ededed;
+  color: #282828
+}
+
+.donate:hover{
+  background-color: #ededed;
+  border-color: #ededed;
+  color: #282828
+}
+
+
 .donate, .motw{
   border-radius: 1em;
   padding-left: 25px;

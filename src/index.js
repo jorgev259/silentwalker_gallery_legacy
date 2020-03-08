@@ -4,11 +4,12 @@ import './index.css'
 import App from './App'
 import Gallery from './js/Gallery'
 import Info from './js/Info'
+import ClanBanners from './js/ClanBanners'
 
 import { useRoutes } from 'hookrouter'
 
 const routes = {
-  '/clanbanners': () => <App />,
+  '/clanbanners': () => <App pageComponent={ClanBanners} />,
   '/info': () => <App pageComponent={Info} />,
   '/Destiny%201/:device': ({ device }) => (
     <App
