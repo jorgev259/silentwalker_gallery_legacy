@@ -7,12 +7,12 @@ export default class NavbarHeader extends React.Component {
   
   driveURL = {
     Destiny1:{
-      Mobile: '',
-      Desktop: ''
+      Mobile: 'https://drive.google.com/drive/folders/1d4FLAlJ1Thn3lx3M-PFOrDCbebNAbAGB',
+      Desktop: 'https://drive.google.com/drive/folders/1drejXFUS5JIKP2WgqqdM0wSa0kY60cuI'
     },
-    Destiny1:{
-      Mobile: '',
-      Desktop: ''
+    Destiny2:{
+      Mobile: 'https://drive.google.com/drive/folders/1ZG-3BjxfRiEMq8so0h8G5B2bqXeFx1oK',
+      Desktop: 'https://drive.google.com/drive/folders/1__8jBXGy14tL12ciEoqBepwxWeqJaD_7'
     }
   }
   navigate = url => {
@@ -37,14 +37,14 @@ export default class NavbarHeader extends React.Component {
         <Collapse id='basic-navbar-nav' navbar isOpen={!this.state.collapsed}>
           <Nav className='mr-auto nav-pills' navbar>
             <NavDropdownHover navigate={this.navigate} title='Destiny 1' game={this.props.game} url={`/Destiny 1/${this.props.device || 'Desktop'}`}>
-              <a className='dropdown-item' href=''>DOWNLOAD ALL</a>
+              <a className='dropdown-item' href={this.driveURL['Destiny1'][this.props.device]} target="_blank">DOWNLOAD ALL</a>
             </NavDropdownHover>
 
             <NavDropdownHover navigate={this.navigate} title='Destiny 2' game={this.props.game} url={`/Destiny 2/${this.props.device || 'Desktop'}/Emblems`}>
               <NavDropdownHoverItem navigate={this.navigate} title='Emblems' url={`/Destiny 2/${this.props.device || 'Desktop'}/Emblems`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
               <NavDropdownHoverItem navigate={this.navigate} title='Seals' url={`/Destiny 2/${this.props.device || 'Desktop'}/Seals`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
               <NavDropdownHoverItem navigate={this.navigate} title='Bonus' url={`/Destiny 2/${this.props.device || 'Desktop'}/Bonus`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
-              <a className='dropdown-item' href=''>DOWNLOAD ALL</a>
+              <a className='dropdown-item' href={this.driveURL['Destiny2'][this.props.device]} target="_blank">DOWNLOAD ALL</a>
             </NavDropdownHover>
             <NavItem>
               <NavLink onClick={() => this.navigate('/clanbanners')}>CLAN BANNERS</NavLink>

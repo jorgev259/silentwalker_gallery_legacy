@@ -204,13 +204,13 @@ body{
   background-color: #282828; 
 }
 
-a.dropdown-item:not([href]) {
+a.dropdown-item:not([href]), a.dropdown-item {
   color: rgba(255,255,255,.5);
   background-color: #282828; 
   text-transform: uppercase;
 }
 
-a.dropdown-item:not([href]):hover, .dropdown.nav-item.current, a.dropdown-item.current:not([href]) {
+a.dropdown-item:not([href]):hover, a.dropdown-item:hover, .dropdown.nav-item.current, a.dropdown-item.current:not([href]) {
   color: white;
   background-color: #282828; 
 }
