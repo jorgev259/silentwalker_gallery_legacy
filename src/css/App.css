@@ -63,6 +63,8 @@ body{
   flex-wrap: wrap;
   z-index: 0;
   transition: transform 1.5s;
+  overflow-y: hidden;
+  overflow-x: auto
 }
 .img-row.Desktop:last-child{
   height:34%
@@ -242,7 +244,7 @@ a.dropdown-item:not([href]):hover, a.dropdown-item:hover, .dropdown.nav-item.cur
 }
 
 @media only screen and (max-width: 768px){
-  a.dropdown-item:not([href]), a.dropdown-item.current:not([href]), a.dropdown-item:not([href]):hover, .dropdown-menu, .nav-pills .show > .nav-link, .dropdown.nav-item.current {
+  a.dropdown-item:not([href]), a.dropdown-item.current:not([href]), a.dropdown-item:not([href]):hover, a.dropdown-item, a.dropdown-item.current, a.dropdown-item:hover, .dropdown-menu, .nav-pills .show > .nav-link, .dropdown.nav-item.current {
     background-color:#fff0;
   }
 

@@ -7,10 +7,10 @@ import './css/toggle.css'
 import { navigate } from 'hookrouter'
 
 export default class App extends React.Component {
-  state = { initialized: false, filter: '', device: this.props.device || 'Desktop'}
+  state = { initialized: false, filter: '', device: this.props.device || 'Desktop' }
 
   onInit = () => this.setState({ initialized: true })
-  setDevice = device =>  this.setState({ device: device })
+  setDevice = device => this.setState({ device: device })
 
   handleFilter = ev => {
     this.setState({ filter: ev.target.value, initialized: false })

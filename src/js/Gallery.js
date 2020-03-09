@@ -5,7 +5,6 @@ import Img from 'react-image'
 import LazyLoad from 'react-lazyload'
 import $ from 'jquery'
 import { viewportW } from 'verge'
-import { Swipeable } from 'react-swipeable'
 
 class ImgRow extends React.Component {
   onLoadCallback = () => {
@@ -105,36 +104,12 @@ export default class Gallery extends React.Component {
     }
   }
 
-  adjustScroll = direction => this.setState({ scroll: this.state.scroll + direction })
-  handleScroll = ev => this.setState({ scroll: ev.dir === 'Right' ? -1 : 1 })
-
   render () {
-    const currentScroll = Math.min(this.state.scroll * this.state.imgWidth, this.state.maxScroll)
-    const displayLeft = this.state.scroll === 0 ? 'none' : 'flex'
-    const displayRight = currentScroll >= this.state.maxScroll ? 'none' : 'flex'
-
     return (
-      <>
-        <div id='scrollLeft' style={{ display: displayLeft }} onClick={() => this.adjustScroll(-1)}>
-          <img
-            src='/img/assets/arrow.png'
-            className='d-block m-auto'
-            alt='left arrow'
-          />
-        </div>
-        <div id='scrollRight' style={{ display: displayRight }} onClick={() => this.adjustScroll(1)}>
-          <img
-            src='/img/assets/arrow.png'
-            className='d-block m-auto'
-            alt='right arrow'
-          />
-        </div>
-
-        <Swipeable preventDefaultTouchmoveEvent onSwiped={this.handleScroll} style={{ transform: `translateX(-${currentScroll}px)` }} className='flex-fill'>
-          {this.props.modal ? <FullImg device={this.props.device} game={this.props.game} includeType={this.props.includeType} type={this.props.type} modal={this.props.modal} show={this.props.modal !== ''} toggle={this.toggleModal} /> : null}
-          {this.props.images.map((e, i) => <ImgRow toggle={this.toggleModal} includeType={this.props.includeType} type={this.props.type} loaded={this.props.initialized} key={i} imgs={e} game={this.props.game} adjustWidth={this.adjustWidth} device={this.props.device} />)}
-        </Swipeable>
-      </>
+      <div className='flex-fill'>
+        {this.props.modal ? <FullImg device={this.props.device} game={this.props.game} includeType={this.props.includeType} type={this.props.type} modal={this.props.modal} show={this.props.modal !== ''} toggle={this.toggleModal} /> : null}
+        {this.props.images.map((e, i) => <ImgRow toggle={this.toggleModal} includeType={this.props.includeType} type={this.props.type} loaded={this.props.initialized} key={i} imgs={e} game={this.props.game} adjustWidth={this.adjustWidth} device={this.props.device} />)}
+      </div>
     )
   }
 }

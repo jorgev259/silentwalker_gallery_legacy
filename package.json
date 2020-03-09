@@ -29,7 +29,6 @@
     "react-image": "^2.3.0",
     "react-lazyload": "^2.6.5",
     "react-scripts": "^3.3.1",
-    "react-swipeable": "^5.5.0",
     "reactstrap": "^8.4.1",
     "sharp": "^0.24.0",
     "verge": "^1.10.2",
@@ -42,7 +41,8 @@
     "eject": "react-scripts eject",
     "sync": "rclone sync -v 'drive:SiLeNtWaLkEr Destiny Emblem Wallpapers' /root/drive_gallery",
     "update":"node update.js",
-    "thumbs":"node resize.js"
+    "thumbs":"node resize.js",
+    "update_drive":"npm run sync && npm run thumbs && npm run update && npm run build"
   },
   "browserslist": {
     "production": [
