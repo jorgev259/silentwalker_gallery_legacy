@@ -7,9 +7,10 @@ import './css/toggle.css'
 import { navigate } from 'hookrouter'
 
 export default class App extends React.Component {
-  state = { initialized: false, filter: '' }
+  state = { initialized: false, filter: '', device: this.props.device || 'Desktop'}
 
   onInit = () => this.setState({ initialized: true })
+  setDevice = device =>  this.setState({ device: device })
 
   handleFilter = ev => {
     this.setState({ filter: ev.target.value, initialized: false })
@@ -19,19 +20,19 @@ export default class App extends React.Component {
     let includeType, sliced
     if (this.props.game) {
       if (!this.props.modal) {
-        if (!info[this.props.game][this.props.device]) navigate(`/Destiny 1/${this.props.device}`)
-        else if (!info[this.props.game][this.props.device][this.props.type]) navigate(`/Destiny 1/${this.props.device}`)
+        if (!info[this.props.game][this.state.device]) navigate(`/Destiny 1/${this.state.device}`)
+        else if (!info[this.props.game][this.state.device][this.props.type]) navigate(`/Destiny 1/${this.state.device}`)
       }
 
-      includeType = info[this.props.game][this.props.device][this.props.type] !== undefined
+      includeType = info[this.props.game][this.state.device][this.props.type] !== undefined
       const filter = e => e.toLowerCase().includes(this.state.filter.toLowerCase())
 
       let bgs = includeType
-        ? info[this.props.game][this.props.device][this.props.type]
-        : info[this.props.game][this.props.device]
+        ? info[this.props.game][this.state.device][this.props.type]
+        : info[this.props.game][this.state.device]
 
       if (this.state.filter !== '') bgs = bgs.filter(filter)
-      sliced = this.props.device === 'Desktop'
+      sliced = this.state.device === 'Desktop'
         ? [
           bgs.slice(0, Math.ceil(bgs.length / 3)),
           bgs.slice(Math.ceil(bgs.length / 3), Math.ceil(bgs.length / 3) * 2),
@@ -45,9 +46,9 @@ export default class App extends React.Component {
 
     return (
       <>
-        <Navbar toggle={this.props.toggle} handleDevice={this.onHandleDevice} onHandleType={this.handleType} device={this.props.device} game={this.props.game} type={this.props.type} onHandleFilter={this.handleFilter} />
+        <Navbar setDevice={this.setDevice} device={this.state.device} game={this.props.game} type={this.props.type} onHandleFilter={this.handleFilter} />
 
-        <this.props.pageComponent modal={this.props.modal} filter={this.state.filter} includeType={includeType} type={this.props.type} game={this.props.game} device={this.props.device} initialized={this.state.initialized} handleInit={this.onInit} images={sliced} />
+        <this.props.pageComponent modal={this.props.modal} filter={this.state.filter} includeType={includeType} type={this.props.type} game={this.props.game} device={this.state.device} initialized={this.state.initialized} handleInit={this.onInit} images={sliced} />
 
         <footer className='footer'>
           <div className='container-fluid'>

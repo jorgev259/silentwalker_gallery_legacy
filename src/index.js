@@ -9,8 +9,8 @@ import ClanBanners from './js/ClanBanners'
 import { useRoutes } from 'hookrouter'
 
 const routes = {
-  '/clanbanners': () => <App pageComponent={ClanBanners} toggle={false} />,
-  '/info': () => <App pageComponent={Info} toggle={false} />,
+  '/clanbanners': () => <App pageComponent={ClanBanners} />,
+  '/info': () => <App pageComponent={Info} />,
   '/Destiny%201/:device': ({ device }) => (
     <App
       pageComponent={Gallery} device={device}
