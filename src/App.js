@@ -7,9 +7,8 @@ import './css/toggle.css'
 import { navigate } from 'hookrouter'
 
 export default class App extends React.Component {
-  state = { initialized: false, filter: '', device: this.props.device || 'Desktop' }
+  state = { filter: '', device: this.props.device || 'Desktop' }
 
-  onInit = () => this.setState({ initialized: true })
   setDevice = device => this.setState({ device: device })
 
   handleFilter = ev => {
@@ -17,7 +16,7 @@ export default class App extends React.Component {
   }
 
   render () {
-    let includeType, sliced
+    let includeType, bgs
     if (this.props.game) {
       if (!this.props.modal) {
         if (!info[this.props.game][this.state.device]) navigate(`/Destiny 1/${this.state.device}`)
@@ -27,28 +26,18 @@ export default class App extends React.Component {
       includeType = info[this.props.game][this.state.device][this.props.type] !== undefined
       const filter = e => e.toLowerCase().includes(this.state.filter.toLowerCase())
 
-      let bgs = includeType
+      bgs = includeType
         ? info[this.props.game][this.state.device][this.props.type]
         : info[this.props.game][this.state.device]
 
       if (this.state.filter !== '') bgs = bgs.filter(filter)
-      sliced = this.state.device === 'Desktop'
-        ? [
-          bgs.slice(0, Math.ceil(bgs.length / 3)),
-          bgs.slice(Math.ceil(bgs.length / 3), Math.ceil(bgs.length / 3) * 2),
-          bgs.slice(Math.ceil(bgs.length / 3) * 2, bgs.length)
-        ]
-        : [
-          bgs.slice(0, Math.ceil(bgs.length / 2)),
-          bgs.slice(Math.ceil(bgs.length / 2), bgs.length)
-        ]
     }
 
     return (
       <>
         <Navbar setDevice={this.setDevice} device={this.state.device} game={this.props.game} type={this.props.type} onHandleFilter={this.handleFilter} />
 
-        <this.props.pageComponent modal={this.props.modal} filter={this.state.filter} includeType={includeType} type={this.props.type} game={this.props.game} device={this.state.device} initialized={this.state.initialized} handleInit={this.onInit} images={sliced} />
+        <this.props.pageComponent modal={this.props.modal} filter={this.state.filter} includeType={includeType} type={this.props.type} game={this.props.game} device={this.state.device} initialized={this.state.initialized} handleInit={this.onInit} images={bgs} />
 
         <footer className='footer'>
           <div className='container-fluid'>
@@ -63,6 +52,7 @@ export default class App extends React.Component {
             </div>
           </div>
         </footer>
+        }
       </>
     )
   }

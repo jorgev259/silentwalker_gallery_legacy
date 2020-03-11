@@ -3,44 +3,32 @@ import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap'
 import { navigate } from 'hookrouter'
 import Img from 'react-image'
 import LazyLoad from 'react-lazyload'
-import $ from 'jquery'
-import { viewportW } from 'verge'
 
-class ImgRow extends React.Component {
-  onLoadCallback = () => {
-    this.props.adjustWidth(true)
-  }
-
+class ImgBG extends React.Component {
   render () {
+    const path = this.props.includeType
+      ? `/img/thumbs/${this.props.game}/${this.props.device}/${this.props.type}/${this.props.image}`
+      : `/img/thumbs/${this.props.game}/${this.props.device}/${this.props.image}`
+
+    const name = path.split('/').pop().split('.').shift()
     return (
-      <div className={`img-row ${this.props.device}`}>
 
-        {this.props.imgs.map(e => {
-          const path = this.props.includeType
-            ? `/img/thumbs/${this.props.game}/${this.props.device}/${this.props.type}/${e}`
-            : `/img/thumbs/${this.props.game}/${this.props.device}/${e}`
+      <LazyLoad
+        key={this.props.image}
+        once
+      >
+        <Img
+          alt={this.props.image}
+          key={this.props.image}
+          draggable='false'
+          className={this.props.device}
+          src={path}
+          loader={<Img src={`/img/assets/loading_${this.props.device}.gif`} />}
+          onLoad={this.props.loaded ? undefined : this.onLoadCallback}
+          onClick={() => navigate(`/${this.props.game}/${this.props.device}${this.props.includeType ? `/${this.props.type}/` : '/'}${name}`)}
+        />
+      </LazyLoad>
 
-          const name = path.split('/').pop().split('.').shift()
-          return (
-            <LazyLoad
-              key={e}
-              once
-            >
-              <Img
-                alt={e}
-                key={e}
-                draggable='false'
-                className='bgImg'
-                src={path}
-                loader={<Img src={`/img/assets/loading_${this.props.device}.gif`} />}
-                onLoad={this.props.loaded ? undefined : this.onLoadCallback}
-                onClick={() => navigate(`/${this.props.game}/${this.props.device}${this.props.includeType ? `/${this.props.type}/` : '/'}${name}`)}
-              />
-            </LazyLoad>
-
-          )
-        })}
-      </div>
     )
   }
 }
@@ -83,32 +71,16 @@ class FullImg extends React.Component {
 }
 
 export default class Gallery extends React.Component {
-  state = { imgWidth: 0, scroll: 0, maxScroll: 0, modal: '' }
+  state = { modal: '' }
   toggleModal = url => {
     this.setState({ modal: url })
-  }
-
-  maxRow = Math.max(...this.props.images.map(e => e.length))
-
-  componentDidMount () {
-    window.addEventListener('resize', () => this.adjustWidth())
-  }
-
-  adjustWidth = (reset = false) => {
-    if ($('.bgImg')[0]) {
-      this.setState({
-        scroll: reset ? 0 : this.state.scroll,
-        imgWidth: $('.bgImg')[0].width,
-        maxScroll: ($('.bgImg')[0].width * this.maxRow) - viewportW()
-      }, this.props.handleInit)
-    }
   }
 
   render () {
     return (
       <div className='flex-fill'>
         {this.props.modal ? <FullImg device={this.props.device} game={this.props.game} includeType={this.props.includeType} type={this.props.type} modal={this.props.modal} show={this.props.modal !== ''} toggle={this.toggleModal} /> : null}
-        {this.props.images.map((e, i) => <ImgRow toggle={this.toggleModal} includeType={this.props.includeType} type={this.props.type} loaded={this.props.initialized} key={i} imgs={e} game={this.props.game} adjustWidth={this.adjustWidth} device={this.props.device} />)}
+        {this.props.images.map(e => <ImgBG toggle={this.toggleModal} includeType={this.props.includeType} type={this.props.type} key={e} image={e} game={this.props.game} device={this.props.device} />)}
       </div>
     )
   }
