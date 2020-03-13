@@ -36,6 +36,10 @@ export default class NavbarHeader extends React.Component {
 
         <NavbarToggler onClick={() => this.setState({ collapsed: !this.state.collapsed })} />
         <Collapse id='basic-navbar-nav' navbar isOpen={!this.state.collapsed}>
+          <Form inline className='d-flex d-md-none'>
+            <Input type='text' placeholder='Search' className='mr-sm-2' onChange={this.props.onHandleFilter} />
+          </Form>
+
           <Nav className='mr-auto nav-pills' navbar>
             <NavDropdownHover navigate={this.navigate} title='Destiny 1' game={this.props.game} url={`/Destiny 1/${this.props.device || 'Desktop'}`}>
               <a className='dropdown-item' href={this.driveURL.Destiny1[this.props.device]} target='_blank' rel='noopener noreferrer'>DOWNLOAD ALL</a>
@@ -58,7 +62,7 @@ export default class NavbarHeader extends React.Component {
             </NavItem>
           </Nav>
 
-          <Form inline>
+          <Form inline className='d-none d-md-flex'>
             <Input type='text' placeholder='Search' className='mr-sm-2' onChange={this.props.onHandleFilter} />
           </Form>
         </Collapse>
