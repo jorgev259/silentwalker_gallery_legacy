@@ -16,22 +16,20 @@ export default class App extends React.Component {
   }
 
   render () {
-    let includeType, bgs
-    if (this.props.game) {
-      if (!this.props.modal) {
-        if (!info[this.props.game][this.state.device]) navigate(`/Destiny 1/${this.state.device}`)
-        else if (!info[this.props.game][this.state.device][this.props.type]) navigate(`/Destiny 1/${this.state.device}`)
-      }
-
-      includeType = info[this.props.game][this.state.device][this.props.type] !== undefined
-      const filter = e => e.toLowerCase().includes(this.state.filter.toLowerCase())
-
-      bgs = includeType
-        ? info[this.props.game][this.state.device][this.props.type]
-        : info[this.props.game][this.state.device]
-
-      if (this.state.filter !== '') bgs = bgs.filter(filter)
+    let bgs
+    const includeType = info[this.props.game][this.state.device] && this.props.type
+    if (!this.props.modal) {
+      if (!includeType && !info[this.props.game][this.state.device]) navigate(`/Destiny 2/${this.state.device}/Emblems`)
+      if (includeType && !info[this.props.game][this.state.device][this.props.type]) navigate(`/Destiny 2/${this.state.device}/Emblems`)
     }
+
+    const filter = e => e.toLowerCase().includes(this.state.filter.toLowerCase())
+
+    bgs = includeType
+      ? info[this.props.game][this.state.device][this.props.type]
+      : info[this.props.game][this.state.device]
+
+    if (this.state.filter !== '') bgs = bgs.filter(filter)
 
     return (
       <>
