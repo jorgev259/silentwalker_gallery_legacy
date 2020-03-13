@@ -4,6 +4,7 @@ import info from './js/bg.json'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './css/App.css'
 import './css/toggle.css'
+import { stringToUrl } from './js/Strings'
 import { navigate } from 'hookrouter'
 
 export default class App extends React.Component {
@@ -19,8 +20,8 @@ export default class App extends React.Component {
     let bgs
     const includeType = info[this.props.game][this.state.device] && this.props.type
     if (!this.props.modal) {
-      if (!includeType && !info[this.props.game][this.state.device]) navigate(`/Destiny 2/${this.state.device}/Emblems`)
-      if (includeType && !info[this.props.game][this.state.device][this.props.type]) navigate(`/Destiny 2/${this.state.device}/Emblems`)
+      if (!includeType && !info[this.props.game][this.state.device]) navigate(`/destiny2/${stringToUrl[this.state.device]}/emblems`)
+      if (includeType && !info[this.props.game][this.state.device][this.props.type]) navigate(`/destiny2/${stringToUrl[this.state.device]}/emblems`)
     }
 
     const filter = e => e.toLowerCase().includes(this.state.filter.toLowerCase())

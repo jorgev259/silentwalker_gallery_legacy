@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, Navbar, NavbarText, NavItem, NavbarToggler, NavbarBrand, Nav, Form, Input, Collapse } from 'reactstrap'
 import { navigate as navigateUrl } from 'hookrouter'
+import { stringToUrl } from './Strings'
 
 export default class NavbarHeader extends React.Component {
   state={ collapsed: true }
@@ -41,14 +42,14 @@ export default class NavbarHeader extends React.Component {
           </Form>
 
           <Nav className='mr-auto nav-pills' navbar>
-            <NavDropdownHover navigate={this.navigate} title='Destiny 1' game={this.props.game} url={`/Destiny 1/${this.props.device || 'Desktop'}`}>
+            <NavDropdownHover navigate={this.navigate} title='Destiny 1' game={this.props.game} url={`/destiny1/${stringToUrl[this.props.device || 'Desktop']}`}>
               <a className='dropdown-item' href={this.driveURL.Destiny1[this.props.device]} target='_blank' rel='noopener noreferrer'>DOWNLOAD ALL</a>
             </NavDropdownHover>
 
-            <NavDropdownHover navigate={this.navigate} title='Destiny 2' game={this.props.game} url={`/Destiny 2/${this.props.device || 'Desktop'}/Emblems`}>
-              <NavDropdownHoverItem navigate={this.navigate} title='Emblems' url={`/Destiny 2/${this.props.device || 'Desktop'}/Emblems`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
-              <NavDropdownHoverItem navigate={this.navigate} title='Seals' url={`/Destiny 2/${this.props.device || 'Desktop'}/Seals`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
-              <NavDropdownHoverItem navigate={this.navigate} title='Bonus' url={`/Destiny 2/${this.props.device || 'Desktop'}/Bonus`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
+            <NavDropdownHover navigate={this.navigate} title='Destiny 2' game={this.props.game} url={`/destiny2/${stringToUrl[this.props.device || 'Desktop']}/emblems`}>
+              <NavDropdownHoverItem navigate={this.navigate} title='Emblems' url={`/destiny2/${stringToUrl[this.props.device || 'Desktop']}/emblems`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
+              <NavDropdownHoverItem navigate={this.navigate} title='Seals' url={`/destiny2/${stringToUrl[this.props.device || 'Desktop']}/seals`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
+              <NavDropdownHoverItem navigate={this.navigate} title='Bonus' url={`/destiny2/${stringToUrl[this.props.device || 'Desktop']}/bonus`} currentGame={this.props.game} game='Destiny 2' type={this.props.type} onHandleType={this.props.onHandleType} />
               <a className='dropdown-item' href={this.driveURL.Destiny2[this.props.device]} rel='noopener noreferrer' target='_blank'>DOWNLOAD ALL</a>
             </NavDropdownHover>
             <NavItem>
@@ -107,8 +108,8 @@ class DeviceToggle extends React.Component {
   handleToggle = () => {
     const device = this.props.device === 'Desktop' ? 'Mobile' : 'Desktop'
     if (this.props.game) {
-      if (this.props.type) this.props.navigate(`/${this.props.game}/${device}/${this.props.type}`)
-      else this.props.navigate(`/${this.props.game}/${device}`)
+      if (this.props.type) this.props.navigate(`/${stringToUrl[this.props.game]}/${stringToUrl[device]}/${stringToUrl[this.props.type]}`)
+      else this.props.navigate(`/${stringToUrl[this.props.game]}/${stringToUrl[device]}`)
     }
     this.props.setDevice(device)
   }

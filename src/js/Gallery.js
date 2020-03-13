@@ -3,6 +3,7 @@ import { Modal, ModalBody, ModalFooter, Button } from 'reactstrap'
 import { navigate } from 'hookrouter'
 import Img from 'react-image'
 import LazyLoad from 'react-lazyload'
+import { stringToUrl } from './Strings'
 
 class ImgBG extends React.Component {
   render () {
@@ -24,8 +25,7 @@ class ImgBG extends React.Component {
           className={this.props.device}
           src={path}
           loader={<Img src={`/img/assets/loading_${this.props.device}.gif`} />}
-          onLoad={this.props.loaded ? undefined : this.onLoadCallback}
-          onClick={() => navigate(`/${this.props.game}/${this.props.device}${this.props.includeType ? `/${this.props.type}/` : '/'}${name}`)}
+          onClick={() => navigate(`/${stringToUrl[this.props.game]}/${stringToUrl[this.props.device]}${this.props.includeType ? `/${stringToUrl[this.props.type]}/` : '/'}${name}`)}
         />
       </LazyLoad>
 
@@ -41,8 +41,8 @@ class FullImg extends React.Component {
       : `/img/fullres/${this.props.game}/${this.props.device}/${this.props.modal}.jpg`
 
     const pathBase = this.props.includeType
-      ? `/${this.props.game}/${this.props.device}/${this.props.type}`
-      : `/${this.props.game}/${this.props.device}`
+      ? `/${stringToUrl[this.props.game]}/${stringToUrl[this.props.device]}/${stringToUrl[this.props.type]}`
+      : `/${stringToUrl[this.props.game]}/${stringToUrl[this.props.device]}`
 
     return (
       <div className='bg-expand'>
