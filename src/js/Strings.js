@@ -4,7 +4,8 @@ const urlToString = {
   desktop: 'Desktop',
   mobile: 'Mobile',
   emblems: 'Emblems',
-  seals: 'Seals'
+  seals: 'Seals',
+  bonus: 'Bonus'
 }
 
 const stringToUrl = {}
