@@ -42,7 +42,7 @@ const Routing = () => {
   const routeResult = useRoutes(routes)
   return routeResult || (
     <script>{(
-      window.location.href = '/Destiny%202/Desktop/Emblems'
+      window.location.href = '/Destiny%201/Desktop'
     )}
     </script>
   )

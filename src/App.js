@@ -19,8 +19,8 @@ export default class App extends React.Component {
     let includeType, bgs
     if (this.props.game) {
       if (!this.props.modal) {
-        if (!info[this.props.game][this.state.device]) navigate(`/Destiny 2/${this.state.device}/Emblems`)
-        else if (!info[this.props.game][this.state.device][this.props.type]) navigate(`/Destiny 2/${this.state.device}/Emblems`)
+        if (!info[this.props.game][this.state.device]) navigate(`/Destiny 1/${this.state.device}`)
+        else if (!info[this.props.game][this.state.device][this.props.type]) navigate(`/Destiny 1/${this.state.device}`)
       }
 
       includeType = info[this.props.game][this.state.device][this.props.type] !== undefined
