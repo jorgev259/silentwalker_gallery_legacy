@@ -34,6 +34,7 @@ export default class NavbarHeader extends React.Component {
           />
         </NavbarBrand>
         <DeviceToggle setDevice={this.props.setDevice} navigate={this.navigate} game={this.props.game} device={this.props.device} type={this.props.type} className='d-sm-none' active={this.props.device === 'Mobile'} />
+        <SortToggle setSort={this.props.setSort} sort={this.props.sort} className='d-sm-none' active={this.props.sort === 'New'} />
 
         <NavbarToggler onClick={() => this.setState({ collapsed: !this.state.collapsed })} />
         <Collapse id='basic-navbar-nav' navbar isOpen={!this.state.collapsed}>
@@ -60,6 +61,9 @@ export default class NavbarHeader extends React.Component {
             </NavItem>
             <NavItem>
               <DeviceToggle setDevice={this.props.setDevice} navigate={this.navigate} game={this.props.game} device={this.props.device} type={this.props.type} onHandleDevice={this.props.handleDevice} className='d-none d-sm-inline-block deviceRow' active={this.props.device === 'Mobile'} />
+            </NavItem>
+            <NavItem>
+              <SortToggle setSort={this.props.setSort} sort={this.props.sort} className='d-none d-sm-inline-block deviceRow' active={this.props.sort === 'New'} />
             </NavItem>
           </Nav>
 
@@ -122,6 +126,25 @@ class DeviceToggle extends React.Component {
           <div className='handle' />
         </button>
         <img src='/img/assets/phone.png' alt='' />
+      </NavbarText>
+    )
+  }
+}
+
+class SortToggle extends React.Component {
+  handleToggle = () => {
+    const sort = this.props.sort === 'Name' ? 'New' : 'Name'
+    this.props.setSort(sort)
+  }
+
+  render () {
+    return (
+      <NavbarText className={this.props.className}>
+        <img src='/img/assets/name.png' style={{height:'25px'}} alt='' />
+        <button type='button' onClick={this.handleToggle} className={`btn btn-toggle ${this.props.active ? 'active' : null}`}>
+          <div className='handle' />
+        </button>
+        <img src='/img/assets/clock.png' style={{height:'25px'}} alt='' />
       </NavbarText>
     )
   }

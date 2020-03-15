@@ -8,9 +8,10 @@ import { stringToUrl } from './js/Strings'
 import { navigate } from 'hookrouter'
 
 export default class App extends React.Component {
-  state = { filter: '', device: this.props.device || 'Desktop' }
+  state = { filter: '', device: this.props.device || 'Desktop', sort: 'Name' }
 
   setDevice = device => this.setState({ device: device })
+  setSort = sort => this.setState({ sort: sort })
 
   handleFilter = ev => {
     this.setState({ filter: ev.target.value, initialized: false })
@@ -31,10 +32,16 @@ export default class App extends React.Component {
 
       if (this.state.filter !== '') bgs = bgs.filter(filter)
     }
+    bgs = this.state.sort === 'New' ? bgs.sort((a, b) => a[0] - b[0]).reverse() : bgs.sort(function(a, b) {
+      if (a[1] < b[1]) return -1;
+      if (a[1] > b[1]) return 1;
+      return 0;
+    })
+    bgs = bgs.map(e => e[1])
 
     return (
       <>
-        <Navbar setDevice={this.setDevice} device={this.state.device} game={this.props.game} type={this.props.type} onHandleFilter={this.handleFilter} />
+        <Navbar setSort={this.setSort} sort={this.state.sort} setDevice={this.setDevice} device={this.state.device} game={this.props.game} type={this.props.type} onHandleFilter={this.handleFilter} />
 
         <this.props.pageComponent modal={this.props.modal} filter={this.state.filter} includeType={includeType} type={this.props.type} game={this.props.game} device={this.state.device} initialized={this.state.initialized} handleInit={this.onInit} images={bgs} />
 

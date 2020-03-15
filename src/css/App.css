@@ -279,10 +279,7 @@ a.dropdown-item:not([href]):hover, a.dropdown-item:hover, .dropdown.nav-item.cur
 }
 
 .deviceRow{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 
