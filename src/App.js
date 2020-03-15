@@ -20,7 +20,7 @@ export default class App extends React.Component {
     let bgs, includeType
     const filter = e => e.toLowerCase().includes(this.state.filter.toLowerCase())
 
-    if (this.props.game && !this.props.modal) {
+    if (this.props.game) {
       includeType = info[this.props.game][this.state.device] && this.props.type
       if (!includeType && !info[this.props.game][this.state.device]) navigate(`/destiny2/${stringToUrl[this.state.device]}/emblems`)
       if (includeType && !info[this.props.game][this.state.device][this.props.type]) navigate(`/destiny2/${stringToUrl[this.state.device]}/emblems`)
