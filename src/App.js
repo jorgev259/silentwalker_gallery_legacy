@@ -18,7 +18,8 @@ export default class App extends React.Component {
   }
 
   render () {
-    let bgs, includeType
+    let bgs = []
+    let includeType
     const filter = e => e.toLowerCase().includes(this.state.filter.toLowerCase())
 
     if (this.props.game) {
@@ -32,10 +33,10 @@ export default class App extends React.Component {
 
       if (this.state.filter !== '') bgs = bgs.filter(filter)
     }
-    bgs = this.state.sort === 'New' ? bgs.sort((a, b) => a[0] - b[0]).reverse() : bgs.sort(function(a, b) {
-      if (a[1] < b[1]) return -1;
-      if (a[1] > b[1]) return 1;
-      return 0;
+    bgs = this.state.sort === 'New' ? bgs.sort((a, b) => a[0] - b[0]).reverse() : bgs.sort(function (a, b) {
+      if (a[1] < b[1]) return -1
+      if (a[1] > b[1]) return 1
+      return 0
     })
     bgs = bgs.map(e => e[1])
 
