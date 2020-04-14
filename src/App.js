@@ -8,7 +8,7 @@ import { stringToUrl } from './js/Strings'
 import { navigate } from 'hookrouter'
 
 export default class App extends React.Component {
-  state = { filter: '', device: this.props.device || 'Desktop', sort: 'Name' }
+  state = { filter: '', device: this.props.device || 'Desktop', sort: 'New' }
 
   setDevice = device => this.setState({ device: device })
   setSort = sort => this.setState({ sort: sort })
@@ -20,7 +20,6 @@ export default class App extends React.Component {
   render () {
     let bgs = []
     let includeType
-    const filter = e => e.toLowerCase().includes(this.state.filter.toLowerCase())
 
     if (this.props.game) {
       includeType = info[this.props.game][this.state.device] && this.props.type
@@ -31,7 +30,7 @@ export default class App extends React.Component {
         ? info[this.props.game][this.state.device][this.props.type]
         : info[this.props.game][this.state.device]
 
-      if (this.state.filter !== '') bgs = bgs.filter(filter)
+      if (this.state.filter !== '') bgs = bgs.filter(e => e[1].toLowerCase().includes(this.state.filter.toLowerCase()))
     }
     bgs = this.state.sort === 'New' ? bgs.sort((a, b) => a[0] - b[0]).reverse() : bgs.sort(function (a, b) {
       if (a[1] < b[1]) return -1
