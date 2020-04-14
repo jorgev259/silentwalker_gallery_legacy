@@ -140,11 +140,11 @@ class SortToggle extends React.Component {
   render () {
     return (
       <NavbarText className={this.props.className}>
-        <img src='/img/assets/name.png' style={{height:'25px'}} alt='' />
-        <button type='button' onClick={this.handleToggle} className={`btn btn-toggle ${this.props.active ? 'active' : null}`}>
+        <img src='/img/assets/clock.png' style={{ height: '25px' }} alt='' />
+        <button type='button' onClick={this.handleToggle} className={`btn btn-toggle ${!this.props.active ? 'active' : null}`}>
           <div className='handle' />
         </button>
-        <img src='/img/assets/clock.png' style={{height:'25px'}} alt='' />
+        <img src='/img/assets/name.png' style={{ height: '25px' }} alt='' />
       </NavbarText>
     )
   }
