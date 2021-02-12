@@ -1,0 +1,28 @@
+.thumb {
+    transition: transform 1s,-webkit-transform 1s;
+
+    div {
+        width: 100%;
+        position: relative;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+.Desktop div {
+    height: calc(100vw / 1 * 9 / 16);
+    @media (min-width: 576px) { height: calc(100vw / 2 * 9 / 16); }
+    @media (min-width: 768px) { height: calc(100vw / 4 * 9 / 16); }
+}
+
+.Mobile div {
+    height: calc(100vw / 2 * 16 / 9);
+    @media (min-width: 576px) { height: calc(100vw / 3 * 16 / 9); }
+    @media (min-width: 768px) { height: calc(100vw / 6 * 16 / 9); }
+}
+
+.thumb:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    z-index: 3;
+}
