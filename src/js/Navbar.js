@@ -23,7 +23,7 @@ export default class NavbarHeader extends React.Component {
 
   render () {
     return (
-      <Navbar fixed='top' dark bg='dark' variant='dark' expand='sm'>
+      <Navbar fixed='top' dark bg='dark' variant='dark' expand='md' style={{ height: '60px' }}>
 
         <NavbarBrand href='#home'>
           <img
@@ -33,13 +33,13 @@ export default class NavbarHeader extends React.Component {
             style={{ height: '30px' }}
           />
         </NavbarBrand>
-        <DeviceToggle setDevice={this.props.setDevice} navigate={this.navigate} game={this.props.game} device={this.props.device} type={this.props.type} className='d-sm-none' active={this.props.device === 'Mobile'} />
-        <SortToggle setSort={this.props.setSort} sort={this.props.sort} className='d-sm-none' active={this.props.sort === 'New'} />
+        <DeviceToggle setDevice={this.props.setDevice} navigate={this.navigate} game={this.props.game} device={this.props.device} type={this.props.type} className='d-md-none' active={this.props.device === 'Mobile'} />
+        <SortToggle setSort={this.props.setSort} sort={this.props.sort} className='d-md-none' active={this.props.sort === 'New'} />
 
         <NavbarToggler onClick={() => this.setState({ collapsed: !this.state.collapsed })} />
         <Collapse id='basic-navbar-nav' navbar isOpen={!this.state.collapsed}>
           <Form inline className='d-flex d-md-none'>
-            <Input type='text' placeholder='Search' className='mr-sm-2' onChange={this.props.onHandleFilter} />
+            <Input type='text' placeholder='Search' className='mr-md-2' onChange={this.props.onHandleFilter} />
           </Form>
 
           <Nav className='mr-auto nav-pills' navbar>
@@ -60,15 +60,15 @@ export default class NavbarHeader extends React.Component {
               <NavLink onClick={() => this.navigate('/info')}>INFO</NavLink>
             </NavItem>
             <NavItem>
-              <DeviceToggle setDevice={this.props.setDevice} navigate={this.navigate} game={this.props.game} device={this.props.device} type={this.props.type} onHandleDevice={this.props.handleDevice} className='d-none d-sm-inline-block deviceRow' active={this.props.device === 'Mobile'} />
+              <DeviceToggle setDevice={this.props.setDevice} navigate={this.navigate} game={this.props.game} device={this.props.device} type={this.props.type} onHandleDevice={this.props.handleDevice} className='d-none d-md-inline-block deviceRow' active={this.props.device === 'Mobile'} />
             </NavItem>
             <NavItem>
-              <SortToggle setSort={this.props.setSort} sort={this.props.sort} className='d-none d-sm-inline-block deviceRow' active={this.props.sort === 'New'} />
+              <SortToggle setSort={this.props.setSort} sort={this.props.sort} className='d-none d-md-inline-block deviceRow' active={this.props.sort === 'New'} />
             </NavItem>
           </Nav>
 
           <Form inline className='d-none d-md-flex'>
-            <Input type='text' placeholder='Search' className='mr-sm-2' onChange={this.props.onHandleFilter} />
+            <Input type='text' placeholder='Search' className='mr-md-2' onChange={this.props.onHandleFilter} />
           </Form>
         </Collapse>
 
