@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
@@ -8,6 +8,7 @@ import ClanBanners from './js/ClanBanners'
 import { urlToString } from './js/Strings'
 
 import { useRoutes } from 'hookrouter'
+import ReactGA from 'react-ga'
 
 const routes = {
   '/clanbanners': () => <App pageComponent={ClanBanners} />,
@@ -41,6 +42,18 @@ const routes = {
 
 const Routing = () => {
   const routeResult = useRoutes(routes)
+
+  useEffect(() => {
+    if (!window.location.href.includes('localhost')) {
+      ReactGA.initialize('UA-160209776-1')
+      ReactGA.pageview(window.location.pathname + window.location.search)
+    }
+  }, [])
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search)
+  }, [routeResult])
+
   return routeResult || (
     <script>{(
       window.location.href = '/destiny2/desktop/emblems'
