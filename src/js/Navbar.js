@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink, Navbar, NavbarText, NavItem, NavbarToggler, NavbarBrand, Nav, Form, Input, Collapse } from 'reactstrap'
 import { navigate as navigateUrl } from 'hookrouter'
 import { stringToUrl } from './Strings'
+import Popup from './Popup'
 
 export default class NavbarHeader extends React.Component {
   state={ collapsed: true }
@@ -23,6 +24,7 @@ export default class NavbarHeader extends React.Component {
 
   render () {
     return (
+      <>
       <Navbar fixed='top' dark bg='dark' variant='dark' expand='md' style={{ height: '60px' }}>
 
         <NavbarBrand href='#home'>
@@ -71,8 +73,9 @@ export default class NavbarHeader extends React.Component {
             <Input type='text' placeholder='Search' className='mr-md-2' onChange={this.props.onHandleFilter} />
           </Form>
         </Collapse>
-
       </Navbar>
+      <Popup />
+      </>
     )
   }
 }
