@@ -25,3 +25,18 @@
     border-color: #fbfd1d;
   }
 }
+
+
+@media (max-width: 576px) { 
+  .root {
+    font-size: 15px !important;
+    .btn {
+      height: 30px;
+      line-height: 30px;
+      font-size: 13px !important;
+      text-align: center;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+}
