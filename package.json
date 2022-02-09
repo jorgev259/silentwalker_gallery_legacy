@@ -41,7 +41,7 @@
     "sync": "rclone sync -v 'drive_gallery:SiLeNtWaLkEr Destiny Emblem Wallpapers' /root/drive_gallery",
     "update": "node update.js",
     "thumbs": "node resize.js",
-    "update_drive": "npm install && npm run sync && npm run thumbs && npm run update && npm run build && rm -r /root/gallery/build/img/fullres && ln -s /root/drive_gallery /root/gallery/build/img/fullres"
+    "update_drive": "npm install && npm run sync && npm run thumbs && npm run update && rm /root/gallery/public/img/fullres && npm run build && rm -r /root/gallery/build/img/fullres && ln -s /root/drive_gallery /root/gallery/build/img/fullres && ln -s /root/drive_gallery /root/gallery/public/img/fullres"
   },
   "browserslist": {
     "production": [
